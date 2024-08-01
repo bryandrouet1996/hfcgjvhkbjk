@@ -1,0 +1,460 @@
+
+<div class="card">
+	
+		
+			<h5>bnbj</h5>
+			<div class="p-fluid p-formgrid grid">
+				<div class="field col-12 md:col-5">
+					<label htmlFor="nombreencu">Nombre del(a) Encuestador(a)</label>
+					<input pInputText id="nombreencu" type="text" />
+				</div>
+				<div class="field col-12 md:col-5">
+					<label htmlFor="nombreentre">Nombre del(a) Entrevistado(a)</label>
+					<input pInputText id="nombreentre" type="text" />
+				</div>
+				<div class="field col-12 md:col-2">
+					<label htmlFor="edad">Edad</label>
+					<input pInputText id="edad" type="text" />
+				</div>
+				<div class="field col-12 md:col-4">
+					<label htmlFor="etnia">Etnia</label>
+					<input pInputTextarea id="etnia" rows="4" />
+				</div>
+				<div class="field col-12 md:col-4">
+					<label htmlFor="estado">Estado Civil</label>
+					<input pInputTextarea id="estado" rows="4" />
+				</div>
+				<div class="field col-12 md:col-4">
+					<label htmlFor="educa">Niv. Educ:</label>
+					<input pInputText id="educa" type="text" />
+				</div>
+				<div class="field col-12 md:col-4">
+					<label htmlFor="state">Cédula</label>
+					<p-dropdown [options]="dropdownItems" optionLabel="name" [(ngModel)]="selectedState"></p-dropdown>
+				</div>
+				<div class="field col-12 md:col-4">
+					<label htmlFor="zip">Discapacidad/Entre</label>
+					<input pInputText id="zip" type="text" />
+				</div>
+				<div class="field col-12 md:col-3">
+					<label htmlFor="edad">Dirección: Sector: </label>
+					<input pInputText id="edad" type="text" />
+				</div>
+				<div class="field col-12 md:col-3">
+					<label htmlFor="etnia">Barrio:</label>
+					<input pInputTextarea id="etnia" rows="4" />
+				</div>
+				<div class="field col-12 md:col-3">
+					<label htmlFor="estado">Manzana:</label>
+					<input pInputTextarea id="estado" rows="4" />
+				</div>
+				<div class="field col-12 md:col-3">
+					<label htmlFor="educa">Número de lote: </label>
+					<input pInputText id="educa" type="text" />
+				</div>
+				<div>
+					<h2>Estado de  su propiedade</h2>
+					
+					<ul *ngIf="estados">
+					  <li *ngFor="let estado of estados; let i = index">
+						<input 
+						  type="checkbox" 
+						  [checked]="estado.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ estado.nombre }}
+					  </li>
+					</ul>
+				  </div>
+				  <div class="field col-12 md:col-3">
+					<label htmlFor="estado">¿Cuántas familias viven en el hogar?</label>
+					<input pInputTextarea id="estado" rows="4" />
+				</div>
+				<div class="field col-12 md:col-3">
+					<label htmlFor="educa">¿Cuántas personas viven en el hogar? </label>
+					<input pInputText id="educa" type="text" />
+				</div>
+				  
+			</div>
+		
+	
+</div>
+<div class="card">
+	<h5>SALUD</h5>
+	
+	
+	<h3>¿Cómo usted evalúa su estado de salud?</h3>
+	<ul>
+	  <li *ngFor="let opcion of calidadOpciones; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="opcion.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ opcion.nombre }}
+	  </li>
+	</ul>
+	<h3>El servicio higiénico que tiene en su vivienda está conectado a:</h3>
+	<ul>
+	  <li *ngFor="let ab of servicio; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="ab.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ ab.nombre }}
+	  </li>
+	</ul>
+	<div class="field col-12 md:col-3">
+		<label htmlFor="estado">Última vez que acudió al sub-centro de salud/médico: </label>
+		<input pInputTextarea id="estado" rows="4" />
+	</div>
+	<div class="field col-12 md:col-3">
+		<label htmlFor="educa">¿Utiliza otros métodos de sanación? Si fuese el caso, precisar cuáles.</label>
+		<input pInputText id="educa" type="text" />
+	</div>
+	<h3>En su opinión, ¿cuáles son las causas de su problema de salud? (Respuesta Múltiple)
+
+	</h3>
+	<ul>
+	  <li *ngFor="let au of causas; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="au.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ au.nombre }}
+	  </li>
+	</ul>
+	  
+  </div>
+
+
+
+<div class="grid">
+	<div class="col-12 md:col-6">
+		<div class="card p-fluid">
+			<h5>VIVIENDA</h5>
+			<div class="field">
+				<h3>Estructura de la vivienda</h3>
+	<ul>
+	  <li *ngFor="let os of vivienda; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="os.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ os.nombre }}
+	  </li>
+	</ul>
+	<h3>¿Cuáles de los siguientes servicios básicos Ud. Dispone? (Respuesta Múltiple)</h3>
+	<ul>
+	  <li *ngFor="let oc of basicos; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="oc.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ oc.nombre }}
+	  </li>
+	</ul>
+	<h3>Qué tipo de perdida tuvo en su domicilio?</h3>
+	<ul>
+	  <li *ngFor="let od of calidadOpciones; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="od.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ od.nombre }}
+	  </li>
+	</ul>
+	<h3>Tipo de alumbrado de la Vivienda:</h3>
+	<ul>
+	  <li *ngFor="let oe of alumbrado; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="oe.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ oe.nombre }}
+	  </li>
+	</ul>
+	<h3>La tenencia de la vivienda es:</h3>
+	<ul>
+	  <li *ngFor="let og of tenenciavi; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="og.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ og.nombre }}
+	  </li>
+	</ul>
+	<h3>¿Cómo se abastece con el agua? (Respuesta Múltiple)</h3>
+	<ul>
+	  <li *ngFor="let oh of abastece; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="oh.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ oh.nombre }}
+	  </li>
+	</ul>
+	<h3>Qué documentos relativos a la propiedad usted tiene?</h3>
+	<ul>
+	  <li *ngFor="let oi of documentos; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="oi.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ oi.nombre }}
+	  </li>
+	</ul>
+	<h3>¿Cuáles de los siguientes bienes y servicios electrodomésticos Ud. ¿Posee? (Respuesta Múltiple)</h3>
+	<ul>
+	  <li *ngFor="let oj of bien; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="oj.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ oj.nombre }}
+	  </li>
+	</ul>
+	
+	<div class="field col-12 md:col-6">
+		<label htmlFor="estado">¿Cuántos pisos posee la vivienda?  </label>
+		<input pInputTextarea id="estado" rows="4" />
+	</div>
+	<div class="field col-12 md:col-6">
+		<label htmlFor="educa">¿Cuántas habitaciones posee la vivienda?</label>
+		<input pInputText id="educa" type="text" />
+	</div>
+	<h3>Su vivienda se encuentra en una zona de riesgo:</h3>
+	<ul>
+	  <li *ngFor="let oj of zona; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="oj.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ oj.nombre }}
+	  </li>
+	</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="field col-12 md:col-6">
+
+			<h5>MEDIOS DE VIDA</h5>
+			<h3>Ha participado en algún tipo de capacitación: (Respuesta Múltiple)</h3>
+		<ul>
+	  <li *ngFor="let mv of capacita; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="mv.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ mv.nombre }}
+	  </li>
+		</ul>
+		<h3>En los últimos 12 meses, ha tenido una actividad laboral:</h3>
+		<ul>
+	  <li *ngFor="let ma of laboral; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="ma.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ ma.nombre }}
+	  </li>
+		</ul>
+		<h3>Actividad económica desempeñada:</h3>
+		<ul>
+	  <li *ngFor="let me of actividadeco; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="me.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ me.nombre }}
+	  </li>
+		</ul>
+		<h3>Trabaja en relación de dependencia?</h3>
+		<ul>
+	  <li *ngFor="let mi of dependencia; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="mi.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ mi.nombre }}
+	  	</li>
+		</ul>
+		<h3>Repartición de los gastos del hogar: </h3>
+		<ul>
+	  	<li *ngFor="let mo of reparticion; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="mo.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ mo.nombre }}
+	  	</li>
+		</ul>
+		<h3>Trabaja por cuenta propia?</h3>
+		<ul>
+	 	 <li *ngFor="let mu of cuenta; let i = index">
+			<input 
+						  type="checkbox" 
+						  [checked]="mu.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ mu.nombre }}
+	  		</li>
+			</ul>
+			<h3>Ingresos mensuales promedios del hogar (sumando los ingresos de todos los individuos activos)</h3>
+			<ul>
+	 		 <li *ngFor="let mk of mensuales let i = index">
+			<input 
+						  type="checkbox" 
+						  [checked]="mk.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ mk.nombre }}
+	  		</li>
+			</ul>
+					<h3>Los ingresos mensuales provienen del (respuesta múltiple):</h3>
+	  		 <ul>
+	  		<li *ngFor="let mz of ingremen; let i = index">
+			<input 
+						  type="checkbox" 
+						  [checked]="mz.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ mz.nombre }}
+	      </li>
+	       </ul>
+			
+
+	</div>
+		
+
+		<div class="card">
+			<h5>REDES DE APOYO (TODAS RESPUESTAS MÚLTIPLES)</h5>
+			<div class="formgroup-inline">
+				<h3>Participa en actividades en el barrio</h3>
+	<ul>
+	  <li *ngFor="let opcion of actividades_barrio; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="opcion.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ opcion.nombre }}
+	  </li>
+	</ul>
+	<h3>Recibe algún tipo de ayuda humanitaria?</h3>
+	<ul>
+	  <li *ngFor="let rd of ayuda_huma; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="rd.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ rd.nombre }}
+	  </li>
+	</ul>
+	<h3>Estuvo usted en algun Centro de Alojamiento Temporal</h3>
+	<ul>
+	  <li *ngFor="let ra of centro_aloja; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="ra.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ ra.nombre }}
+	  </li>
+	</ul>
+	<h3>En su tiempo libre, que actividades realizan (dentro del cantón)</h3>
+	<ul>
+	  <li *ngFor="let ri of realiza_activ ; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="ri.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ ri.nombre }}
+	  </li>
+	</ul>
+	<h3>En su tiempo libre, que actividades realizan (fuera del cantón)</h3>
+	<ul>
+	  <li *ngFor="let ro of realiza_act; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="ro.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ ro.nombre }}
+	  </li>
+	</ul>
+	<h3>¿Qué sugiere usted para mejorar su barrio? (Seleccionar 3):</h3>
+	<ul>
+	  <li *ngFor="let rm of mejorar_bar; let i = index">
+		<input 
+						  type="checkbox" 
+						  [checked]="rm.seleccionado" 
+						  (change)="toggleSeleccionado(i)" 
+						/>
+						{{ rm.nombre }}
+	  </li>
+	</ul>
+			</div>
+		</div>
+
+		<div class="card">
+			<h5>Help Text</h5>
+			<div class="field p-fluid">
+				<label htmlFor="username">Username</label>
+				<input pInputText id="username" type="text" />
+				<small>Enter your username to reset your password.</small>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-12">
+		<div class="card">
+			<h5>Advanced</h5>
+			<div class="p-fluid p-formgrid grid">
+				<div class="field col-12 md:col-6">
+					<label htmlFor="firstname2">Firstname</label>
+					<input pInputText id="firstname2" type="text" />
+				</div>
+				<div class="field col-12 md:col-6">
+					<label htmlFor="lastname2">Lastname</label>
+					<input pInputText id="lastname2" type="text" />
+				</div>
+				<div class="field col-12">
+					<label htmlFor="address">Address</label>
+					<input pInputTextarea id="address" rows="4" />
+				</div>
+				<div class="field col-12 md:col-6">
+					<label htmlFor="city">City</label>
+					<input pInputText id="city" type="text" />
+				</div>
+				<div class="field col-12 md:col-3">
+					<label htmlFor="state">State</label>
+					<p-dropdown [options]="dropdownItems" optionLabel="name" [(ngModel)]="selectedState"></p-dropdown>
+				</div>
+				<div class="field col-12 md:col-3">
+					<label htmlFor="zip">Zip</label>
+					<input pInputText id="zip" type="text" />
+				</div>
+			</div>
+		</div>
+	</div>
+
